@@ -1,0 +1,17 @@
+---
+Description: Downloads the latest version of QuPath. Specify ARCH for arm64 Apple Silicon or x64 for Intel.
+Identifier: com.github.anywhereops.download.QuPath
+Input:
+  NAME: QuPath
+  ARCH: arm64
+
+MinimumVersion: '2.3'
+Process:
+- Arguments:
+    asset_regex: .*\.pkg$
+    github_repo: qupath/qupath
+  Processor: GitHubReleasesInfoProvider
+- Arguments:
+    filename: '%NAME%-%ARCH%-%version%.pkg'
+  Processor: URLDownloader
+- Processor: EndOfCheckPhase

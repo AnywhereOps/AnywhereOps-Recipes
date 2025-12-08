@@ -1,0 +1,23 @@
+---
+Description: Downloads the latest EndNote 2025 installer, uses it to create a package,
+ and imports it into Munki.
+Identifier: com.github.anywhereops.munki.EndNoteApplicationInstaller
+Input:
+  APP_FILENAME: Install EndNote 2025
+  MUNKI_REPO_SUBDIR: apps/%NAME%
+  NAME: EndNote Application Installer
+  pkginfo:
+    catalogs:
+    - testing
+    description: Bibliographic management app.
+    developer: Thomson Reuters (Scientific) Inc.
+    display_name: EndNote Application Installer
+    name: '%NAME%'
+    unattended_install: true
+MinimumVersion: '2.3'
+ParentRecipe: com.github.rtrouton.download.EndNote2025
+Process:
+- Arguments:
+    pkg_path: '%pathname%'
+    repo_subdirectory: '%MUNKI_REPO_SUBDIR%'
+  Processor: MunkiImporter

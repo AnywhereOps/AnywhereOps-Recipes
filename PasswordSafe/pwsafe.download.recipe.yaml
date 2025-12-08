@@ -1,0 +1,15 @@
+Comment: Created with Recipe Robot v2.5.0 (https://github.com/homebysix/recipe-robot)
+Description: Downloads the latest version of pwsafe.
+Identifier: com.github.anywhereops.download.pwsafe
+Input:
+  NAME: pwsafe
+MinimumVersion: '2.3'
+Process:
+- Arguments:
+    asset_regex: .*\.dmg$
+    github_repo: pwsafe/pwsafe
+  Processor: GitHubReleasesInfoProvider
+- Arguments:
+    filename: '%NAME%-%version%.dmg'
+  Processor: URLDownloader
+- Processor: EndOfCheckPhase

@@ -1,0 +1,36 @@
+---
+Description: Downloads the latest version of Install SQL Anywhere and imports it into
+  Munki.
+Identifier: com.github.anywhereops.munki.InstallSQLAnywhere
+Input:
+  MUNKI_REPO_SUBDIR: apps/%NAME%
+  NAME: Install SQL Anywhere
+  pkginfo:
+    catalogs:
+    - testing
+    description: Share files easily.
+    developer: ''
+    display_name: Install SQL Anywhere
+    name: '%NAME%'
+    unattended_install: true
+MinimumVersion: '2.3'
+ParentRecipe: com.github.anywhereops.download.InstallSQLAnywhere
+Process:
+- Arguments:
+    archive_path: '%pathname%'
+    destination_path: '%RECIPE_CACHE_DIR%/%NAME%'
+    purge_destination: true
+  Processor: Unarchiver
+- Arguments:
+    dmg_path: '%RECIPE_CACHE_DIR%/%NAME%.dmg'
+    dmg_root: '%RECIPE_CACHE_DIR%/%NAME%'
+  Processor: DmgCreator
+- Arguments:
+    additional_pkginfo:
+      version: '%version%'
+  Processor: MunkiPkginfoMerger
+- Arguments:
+    pkg_path: '%dmg_path%'
+    repo_subdirectory: '%MUNKI_REPO_SUBDIR%'
+    version_comparison_key: CFBundleVersion
+  Processor: MunkiImporter

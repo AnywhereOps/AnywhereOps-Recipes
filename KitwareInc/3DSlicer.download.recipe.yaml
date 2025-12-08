@@ -1,0 +1,23 @@
+--- #Need to make sure URL text search is unneeded
+Description: Downloads the latest version of 3D Slicer.
+Identifier: com.github.anywhereops.download.3DSlicer
+Input:
+  APP_FILENAME: Slicer
+  NAME: Slicer
+MinimumVersion: '2.3'
+Process:
+- Arguments:
+    filename: '%NAME%*.dmg'
+    url: https://download.slicer.org/bitstream/6911c75fac7b1c95e7934d1b
+  Processor: URLDownloader
+- Processor: EndOfCheckPhase
+- Arguments:
+    input_path: '%pathname%/Slicer.app'
+    requirement: identifier "org.slicer.slicer" and anchor apple generic and certificate
+      1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13]
+      /* exists */ and certificate leaf[subject.OU] = W38PE5Y733
+  Processor: CodeSignatureVerifier
+- Arguments:
+    input_plist_path: '%pathname%/Slicer.app/Contents/Info.plist'
+    plist_version_key: CFBundleShortVersionString
+  Processor: Versioner

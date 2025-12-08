@@ -1,0 +1,22 @@
+Comment: Created with Recipe Robot v2.5.0 (https://github.com/homebysix/recipe-robot)
+Description: Downloads the latest version of MiTeam Meetings.
+Identifier: com.github.anywhereops.download.MiTeamMeetings
+Input:
+  NAME: MiTeam Meetings
+MinimumVersion: '2.3'
+Process:
+- Arguments:
+    filename: '%NAME%.dmg'
+    url: https://downloads.mitel.io/meet/latest/mimeet.dmg
+  Processor: URLDownloader
+- Processor: EndOfCheckPhase
+- Arguments:
+    input_path: '%pathname%/MiTeam Meetings.app'
+    requirement: identifier "com.mitel.meetings" and anchor apple generic and certificate
+      1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13]
+      /* exists */ and certificate leaf[subject.OU] = "6QJ45CE63B"
+  Processor: CodeSignatureVerifier
+- Arguments:
+    input_plist_path: '%pathname%/MiTeam Meetings.app/Contents/Info.plist'
+    plist_version_key: CFBundleShortVersionString
+  Processor: Versioner

@@ -1,0 +1,12 @@
+--- #I need to put in URL text search to keep up with future versions
+Description: Downloads the latest version of Install SQL Anywhere.
+Identifier: com.github.anywhereops.download.InstallSQLAnywhere
+Input:
+  NAME: Install SQL Anywhere
+MinimumVersion: '2.3'
+Process:
+- Arguments:
+    filename: '%NAME%.tgz'
+    url: https://d5d4ifzqzkhwt.cloudfront.net/sqla17client/sqla17_client_os_x.tar.gz
+  Processor: URLDownloader
+- Processor: EndOfCheckPhase

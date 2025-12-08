@@ -1,0 +1,29 @@
+---
+Description: Downloads the latest version of DDPM and imports it into Munki.
+Identifier: com.github.anywhereops.munki.DellDisplayAndPeripheralManager
+Input:
+  MUNKI_REPO_SUBDIR: apps/%NAME%
+  NAME: DellDisplayAndPeripheralManager
+  pkginfo:
+    blocking_applications:
+    - DDPM.app
+    - AutoLaunchDDPMHelper.app
+    catalogs:
+    - testing
+    description: 'Dell Display and Peripheral Manager application helps to customize and manage your Dell monitors and webcam on Mac operating system.'
+    developer: Qisda Corp.
+    display_name: Dell Display and Peripheral Manager
+    name: '%NAME%'
+    unattended_install: true
+MinimumVersion: '2.3'
+ParentRecipe: com.github.grahampugh.recipes.download.DellDisplayAndPeripheralManager
+Process:
+- Arguments:
+    additional_pkginfo:
+      version: '%version%'
+  Processor: MunkiPkginfoMerger
+- Arguments:
+    pkg_path: '%found_filename%'
+    repo_subdirectory: '%MUNKI_REPO_SUBDIR%'
+    version_comparison_key: CFBundleVersion
+  Processor: MunkiImporter

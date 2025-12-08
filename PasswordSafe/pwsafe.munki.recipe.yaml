@@ -1,0 +1,24 @@
+Comment: Created with Recipe Robot v2.5.0 (https://github.com/homebysix/recipe-robot)
+Description: Downloads the latest version of pwsafe and imports it into Munki.
+Identifier: com.github.anywhereops.munki.pwsafe
+Input:
+  MUNKI_REPO_SUBDIR: apps/%NAME%
+  NAME: pwsafe
+  pkginfo:
+    catalogs:
+    - testing
+    description: Password Safe - popular secure and convenient password manager
+    developer: Password Safe
+    display_name: pwsafe
+    name: '%NAME%'
+    unattended_install: true
+MinimumVersion: '2.3'
+ParentRecipe: com.github.anywhereops.download.pwsafe
+Process:
+- Arguments:
+    dmg_path: '%pathname%'
+  Processor: AppDmgVersioner
+- Arguments:
+    pkg_path: '%pathname%'
+    repo_subdirectory: '%MUNKI_REPO_SUBDIR%'
+  Processor: MunkiImporter

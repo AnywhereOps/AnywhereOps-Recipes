@@ -1,0 +1,22 @@
+Comment: Created with Recipe Robot v2.5.0 (https://github.com/homebysix/recipe-robot)
+Description: Downloads the latest version of Smartsheet.
+Identifier: com.github.anywhereops.download.Smartsheet
+Input:
+  NAME: Smartsheet
+MinimumVersion: '2.3'
+Process:
+- Arguments:
+    filename: '%NAME%.dmg'
+    url: https://builds.desktopapp.smartsheet.com/public/darwin/Smartsheet-setup.dmg
+  Processor: URLDownloader
+- Processor: EndOfCheckPhase
+- Arguments:
+    input_path: '%pathname%/Smartsheet.app'
+    requirement: identifier "com.smartsheet.desktopapp" and anchor apple generic and
+      certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13]
+      /* exists */ and certificate leaf[subject.OU] = J89ET3PY68
+  Processor: CodeSignatureVerifier
+- Arguments:
+    input_plist_path: '%pathname%/Smartsheet.app/Contents/Info.plist'
+    plist_version_key: CFBundleShortVersionString
+  Processor: Versioner

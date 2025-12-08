@@ -1,0 +1,22 @@
+---
+Description: Downloads the latest version of 3D Slicer and imports it into Munki.
+Identifier: com.github.anywhereops.munki.3DSlicer
+Input:
+  APP_FILENAME: Slicer
+  MUNKI_REPO_SUBDIR: apps/%NAME%
+  NAME: 3DSlicer
+  pkginfo:
+    catalogs:
+    - testing
+    description: Open-source software platform for medical image informatics, image processing, and three-dimensional visualization.
+    developer: Kitware Inc.
+    display_name: 3D Slicer
+    name: '%NAME%'
+    unattended_install: true
+MinimumVersion: '2.3'
+ParentRecipe: com.github.anywhereops.download.3DSlicer
+Process:
+- Arguments:
+    pkg_path: '%pathname%'
+    repo_subdirectory: '%MUNKI_REPO_SUBDIR%'
+  Processor: MunkiImporter

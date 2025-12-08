@@ -1,0 +1,14 @@
+---
+Description: Downloads the latest version of Johnson Controls Launcher.
+Identifier: com.github.anywhereops.download.JohnsonControlsLauncher
+Input:
+  NAME: Launcher
+  URL: https://www.johnsoncontrols.com/-/media/project/jci-global/johnson-controls/us-region/united-states-johnson-controls/building-automation-and-controls/metasys-launcher/launcher-mac.dmg
+MinimumVersion: '2.3'
+Process:
+- Arguments:
+    filename: '%NAME%.dmg'
+    url: '%URL%'
+  Processor: URLDownloader
+- Processor: EndOfCheckPhase
+#### Need to add code signature verification here in future ####

@@ -1,0 +1,24 @@
+Comment: Created with Recipe Robot v2.5.0 (https://github.com/homebysix/recipe-robot)
+Description: Downloads the latest version of Smartsheet and imports it into Munki.
+Identifier: com.github.anywhereops.munki.Smartsheet
+Input:
+  MUNKI_REPO_SUBDIR: apps/%NAME%
+  NAME: Smartsheet
+  pkginfo:
+    catalogs:
+    - testing
+    description: 'The Smartsheet AI-powered platform delivers adaptability, sophisticated experiences,
+     and enterprise-grade rigor to support work across industries — from service delivery to 
+     construction, clinical trials, and marketing campaigns. Designed to meet demanding requirements, 
+     it helps organizations drive efficiency, accelerate innovation, and stay competitive.'
+    developer: Smartsheet Inc.
+    display_name: Smartsheet
+    name: '%NAME%'
+    unattended_install: true
+MinimumVersion: '2.3'
+ParentRecipe: com.github.anywhereops.download.Smartsheet
+Process:
+- Arguments:
+    pkg_path: '%pathname%'
+    repo_subdirectory: '%MUNKI_REPO_SUBDIR%'
+  Processor: MunkiImporter

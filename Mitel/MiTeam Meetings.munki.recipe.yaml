@@ -1,0 +1,21 @@
+Comment: Created with Recipe Robot v2.5.0 (https://github.com/homebysix/recipe-robot)
+Description: Downloads the latest version of MiTeam Meetings and imports it into Munki.
+Identifier: com.github.anywhereops.munki.MiTeamMeetings
+Input:
+  MUNKI_REPO_SUBDIR: apps/%NAME%
+  NAME: MiTeam Meetings
+  pkginfo:
+    catalogs:
+    - testing
+    description: Meetings made easy.
+    developer: Mitel Networks Corporation
+    display_name: MiTeam Meetings
+    name: '%NAME%'
+    unattended_install: true
+MinimumVersion: '2.3'
+ParentRecipe: com.github.anywhereops.download.MiTeamMeetings
+Process:
+- Arguments:
+    pkg_path: '%pathname%'
+    repo_subdirectory: '%MUNKI_REPO_SUBDIR%'
+  Processor: MunkiImporter

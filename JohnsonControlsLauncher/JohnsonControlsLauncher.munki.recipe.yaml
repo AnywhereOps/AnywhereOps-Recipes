@@ -1,0 +1,26 @@
+---
+Description: Downloads the latest version of Johnson Controls Launcher and imports it into Munki.
+Identifier: com.github.anywhereops.munki.JohnsonControlsLauncher
+Input:
+  MUNKI_REPO_SUBDIR: apps/%NAME%
+  NAME: JohnsonControlsLauncher
+  pkginfo:
+    blocking_applications:
+    - Launcher.app
+    catalogs:
+    - testing
+    description: Fast and light app launcher for Johnson Controls Metasys.
+    developer: 'Johnson Controls'
+    display_name: Johnson Controls Launcher
+    name: '%NAME%'
+    unattended_install: true
+MinimumVersion: '2.3'
+ParentRecipe: com.github.anywhereops.download.JohnsonControlsLauncher
+Process:
+- Arguments:
+    dmg_path: '%pathname%'
+  Processor: AppDmgVersioner
+- Arguments:
+    pkg_path: '%pathname%'
+    repo_subdirectory: '%MUNKI_REPO_SUBDIR%'
+  Processor: MunkiImporter

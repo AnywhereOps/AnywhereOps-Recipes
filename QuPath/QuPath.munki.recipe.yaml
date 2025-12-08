@@ -1,0 +1,24 @@
+---
+Description: Downloads the latest version of QuPath and imports it into
+  Munki. Specify ARCH for arm64 Apple Silicon or x64 for Intel.
+Identifier: com.github.anywhereops.munki.QuPath
+Input:
+  MUNKI_REPO_SUBDIR: apps/%NAME%
+  NAME: QuPath
+  pkginfo:
+    blocking_applications:
+    - QuPath*.app
+    catalogs:
+    - testing
+    description: QuPath - Open-source bioimage analysis for research
+    developer: QuPath
+    display_name: QuPath
+    name: '%NAME%'
+    unattended_install: true
+MinimumVersion: '2.3'
+ParentRecipe: com.github.anywhereops.download.QuPath
+Process:
+- Arguments:
+    pkg_path: '%pathname%'
+    repo_subdirectory: '%MUNKI_REPO_SUBDIR%'
+  Processor: MunkiImporter

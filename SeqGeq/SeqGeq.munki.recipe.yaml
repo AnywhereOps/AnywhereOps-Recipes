@@ -1,0 +1,21 @@
+---
+Description: Downloads the latest version of SeqGeq and imports it into Munki.
+Identifier: com.github.anywhereops.munki.SeqGeq
+Input:
+  MUNKI_REPO_SUBDIR: apps/%NAME%
+  NAME: SeqGeq
+  pkginfo:
+    catalogs:
+    - testing
+    description: 'SeqGeq™ (seek-geek) is a desktop bioinformatics platform that makes complex scRNA seq analysis accessible with an intuitive interface. SeqGeq lets you control your analysis - no more writing R scripts to visualize your data - and easily share your results for publication and collaboration. Import and analyze any gene expression data or list of genes and share your entire analysis with a single zip file (GeqZip analysis). Explore, visualize, and shape your next-gen sequencing data with interactive graphs that are designed to help you focus on the insights that matter most. '
+    developer: FlowJo LLC
+    display_name: SeqGeq
+    name: '%NAME%'
+    unattended_install: true
+MinimumVersion: '2.3'
+ParentRecipe: com.github.anywhereops.download.SeqGeq
+Process:
+- Arguments:
+    pkg_path: '%pathname%'
+    repo_subdirectory: '%MUNKI_REPO_SUBDIR%'
+  Processor: MunkiImporter

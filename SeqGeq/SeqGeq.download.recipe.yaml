@@ -1,0 +1,22 @@
+--- #need to add URL text search to keep up with future versions
+Description: Downloads the latest version of SeqGeq.
+Identifier: com.github.anywhereops.download.SeqGeq
+Input:
+  NAME: SeqGeq
+MinimumVersion: '2.3'
+Process:
+- Arguments:
+    filename: '%NAME%.dmg'
+    url: https://fjinstallers.s3.amazonaws.com/SeqGeq/SeqGeq-OSX64-1.8.0.dmg
+  Processor: URLDownloader
+- Processor: EndOfCheckPhase
+- Arguments:
+    input_path: '%pathname%/SeqGeq.app'
+    requirement: identifier "com.flowjollc.seqgeq" and anchor apple generic and certificate
+      1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13]
+      /* exists */ and certificate leaf[subject.OU] = C79HU5AD9V
+  Processor: CodeSignatureVerifier
+- Arguments:
+    input_plist_path: '%pathname%/SeqGeq.app/Contents/Info.plist'
+    plist_version_key: CFBundleShortVersionString
+  Processor: Versioner
