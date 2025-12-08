@@ -1,23 +1,24 @@
-Description: Downloads the latest version of DYMO Connect and imports it into Munki.
+--- #Upstream Recipe is broken. Will require custom processor to fix.
+Description: Downloads the latest version of DYMO Connect and imports it into
+  Munki.
 Identifier: com.github.anywhereops.munki.DYMOConnect
-MinimumVersion: "2.3"
-ParentRecipe: com.github.anywhereops.download.DYMOConnect
-
 Input:
   MUNKI_REPO_SUBDIR: apps/%NAME%
   NAME: DYMOConnect
   pkginfo:
     blocking_applications:
-      - DYMO.WebApi.Mac.Host.app
-      - DYMO Connect.app
-      - DYMO Connect Support Tool.app
+    - DYMO.WebApi.Mac.Host.app
+    - DYMO Connect.app
+    - DYMO Connect Support Tool.app
     catalogs:
-      - testing
-    description: "DYMO Connect for Desktop - label printing software for DYMO LabelWriter printers."
+    - testing
+    description: ' '
     developer: Sanford, L.P.
     display_name: DYMO Connect
-    name: "%NAME%"
+    name: '%NAME%'
     unattended_install: true
+MinimumVersion: '2.3'
+ParentRecipe: com.github.davidbpirie.download.DYMOConnect
 Process:
 - Arguments:
     pkg_path: '%pathname%'
