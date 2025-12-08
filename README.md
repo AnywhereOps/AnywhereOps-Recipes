@@ -6,22 +6,21 @@ AutoPkg recipes for automated macOS software deployment via Munki. These recipes
 
 ## Available Recipes
 
-| Application | Description |
-|-------------|-------------|
-| DellDisplayAndPeripheralManager | Dell monitor and peripheral management |
+| Application | Description | Status |
+|-------------|-------------|--------|
+| DellDisplayAndPeripheralManager | Dell monitor and peripheral management | 
 | DYMO Connect | Label printer software |
-| EndNote | Citation management |
+| EndNote2025 | Citation management | Complete |
 | InstallSQLAnywhere | SQL Anywhere database client |
 | JohnsonControlsLauncher | Johnson Controls building automation |
 | 3D Slicer | Medical imaging and visualization (KitwareInc) |
 | Mitel MiTeam Meetings | Video conferencing |
-| PasswordSafe | Password manager |
-| QuPath | Bioimage analysis for pathology |
-| SeqGeq | Flow cytometry data analysis |
-| Smartsheet | Project management and collaboration |
-| Testcontainers Desktop | Docker testing framework |
-| XCodeCLITools | Apple Xcode command line tools |
-
+| PasswordSafe | Password manager | 
+| QuPath | Bioimage analysis for pathology | Complete |
+| SeqGeq | Flow cytometry data analysis | In Development |
+| Smartsheet | Project management and collaboration | Complete |
+| Testcontainers Desktop | Docker testing framework | Complete |
+| XCodeCLITools | Apple Xcode command line tools | TODO for .munki |
 ## Prerequisites
 
 - [AutoPkg](https://github.com/autopkg/autopkg) v2.3 or later
