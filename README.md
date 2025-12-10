@@ -1,7 +1,7 @@
-![AnywhereOps](icons/AnywhereOps_Logo.PNG)
+![[AnywhereOps](icons/AnywhereOps_Logo.PNG)](https://anywhereops.ai)
 
-# AnywhereOps-recipes
-[AnywhereOps](https://anywhereops.ai) - Customer-First IT for Innovative Organizations
+
+# [AnywhereOps](https://anywhereops.ai) - Customer-First IT for Innovative Organizations
 AutoPkg recipes for automated macOS software deployment via Munki. These recipes automate downloading and importing software packages into your Munki repository.
 
 ## Available Recipes
