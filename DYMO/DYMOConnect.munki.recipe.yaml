@@ -12,7 +12,7 @@ Input:
     - DYMO Connect Support Tool.app
     catalogs:
     - testing
-    description: ' '
+    description: 'DYMO Connect makes it easy to create and print labels, cards, and more.'
     developer: Sanford, L.P.
     display_name: DYMO Connect
     name: '%NAME%'

@@ -1,0 +1,26 @@
+---
+Description: Download the Xcode Command Line Tools from the Apple dev portal and creates a .pkg,
+ and imports it into Munki. Specify ARCH for arm64 Apple Silicon or x64 for Intel.
+Important Override Variables:
+  You must override APPLE_ID and one of PASSWORD_FILE or PASSWORD
+  BETA must either be empty for stable releases or set to "Beta" in order to match Xcode betas
+Identifier: com.github.anywhereops.munki.XCodeCLITools
+Input:
+  MUNKI_REPO_SUBDIR: apps/%NAME%
+  NAME: XCodeCLITools
+  pkginfo:
+    blocking_applications:
+    catalogs:
+    - testing
+    description: Xcode Command Line Tools from the Apple developer portal
+    developer: Apple Inc.
+    display_name: Xcode Command Line Tools
+    name: '%NAME%'
+    unattended_install: true
+MinimumVersion: '2.3'
+ParentRecipe: com.github.anywhereops.download.XCodeCLITools
+Process:
+- Arguments:
+    pkg_path: '%pathname%'
+    repo_subdirectory: '%MUNKI_REPO_SUBDIR%'
+  Processor: MunkiImporter

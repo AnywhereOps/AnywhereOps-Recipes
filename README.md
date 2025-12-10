@@ -4,52 +4,29 @@
 ## [AnywhereOps](https://anywhereops.ai) - Customer-First IT for Innovative Organizations
 AutoPkg recipes for automated macOS software deployment via Munki. These recipes automate downloading and importing software packages into your Munki repository.
 
+## Dependencies
+Some recipes in this repo:
+- Have parent recipes in other repos,
+- Rely on recipes from other repos, or
+- Use processors from other repos
+- Please verify recipes with `autopkg info <recipe_name>` to check for these dependencies.
+
 ## Available Recipes
 
 | Application | Description | Status |
 |-------------|-------------|--------|
-| DellDisplayAndPeripheralManager | Dell monitor and peripheral management | 
-| DYMO Connect | Label printer software |
+| DellDisplayAndPeripheralManager | Dell monitor and peripheral management | Complete |
+| DYMO Connect | Label printer software | Complete |
 | EndNote2025 | Citation management | Complete |
 | InstallSQLAnywhere | SQL Anywhere database client |
-| JohnsonControlsLauncher | Johnson Controls building automation |
-| 3D Slicer | Medical imaging and visualization (KitwareInc) |
-| Mitel MiTeam Meetings | Video conferencing |
-| PasswordSafe | Password manager | 
+| JohnsonControlsLauncher | Johnson Controls building automation | Development |
+| 3D Slicer | Medical imaging and visualization (KitwareInc) | Development/Testing |
+| Mitel MiTeam Meetings | Video conferencing | Complete |
+| PasswordSafe | Password manager | Complete |
 | QuPath | Bioimage analysis for pathology | Complete |
 | SeqGeq | Flow cytometry data analysis | In Development |
 | Smartsheet | Project management and collaboration | Complete |
 | Testcontainers Desktop | Docker testing framework | Complete |
-| XCodeCLITools | Apple Xcode command line tools | TODO for .munki |
-## Prerequisites
-
-- [AutoPkg](https://github.com/autopkg/autopkg) v2.3 or later
-- [Munki](https://github.com/munki/munki) repository configured
-
-## Usage
-
-### Add this recipe repository
-
-```bash
-autopkg repo-add https://github.com/anywhereops/AnywhereOps-recipes
-```
-
-### Run a recipe
-
-```bash
-# Download and import to Munki
-autopkg run com.github.anywhereops.munki.Smartsheet
-
-# Or run the download recipe only
-autopkg run com.github.anywhereops.download.Smartsheet
-```
-
-### List available recipes
-
-```bash
-autopkg list-recipes | grep anywhereops
-```
-
----
+| XCodeCLITools | Apple Xcode command line tools | Testing |
 
 
