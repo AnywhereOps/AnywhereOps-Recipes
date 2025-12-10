@@ -1,4 +1,4 @@
-[AnywhereOps](icons/AnywhereOps_Logo.PNG)
+![AnywhereOps](icons/AnywhereOps_Logo.PNG)
 
 
 ## [AnywhereOps](https://anywhereops.ai) - Customer-First IT for Innovative Organizations
