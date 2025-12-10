@@ -1,4 +1,4 @@
-Comment: Created with Recipe Robot v2.5.0 (https://github.com/homebysix/recipe-robot)
+---
 Description: Downloads the latest version of Smartsheet.
 Identifier: com.github.anywhereops.download.Smartsheet
 Input:
