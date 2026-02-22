@@ -18,7 +18,7 @@ Some recipes in this repo:
 | DellDisplayAndPeripheralManager | Dell monitor and peripheral management | Complete |
 | DYMO Connect | Label printer software | Complete |
 | EndNote2025 | Citation management | Complete |
-| InstallSQLAnywhere | SQL Anywhere database client |
+| InstallSQLAnywhere | SQL Anywhere database client | Development |
 | JohnsonControlsLauncher | Johnson Controls building automation | Development |
 | 3D Slicer | Medical imaging and visualization (KitwareInc) | Development/Testing |
 | Mitel MiTeam Meetings | Video conferencing | Complete |
