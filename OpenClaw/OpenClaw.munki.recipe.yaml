@@ -1,0 +1,25 @@
+Description: Downloads the latest version of OpenClaw and imports it into Munki.
+Identifier: com.github.anywhereops.munki.OpenClaw
+Input:
+  MUNKI_REPO_SUBDIR: apps/%NAME%
+  NAME: OpenClaw
+  pkginfo:
+    catalogs:
+    - testing
+    description: "Your own personal AI assistant. Any OS. Any Platform. The lobster\
+      \ way. \U0001F99E "
+    developer: Peter Steinberger
+    display_name: OpenClaw
+    name: '%NAME%'
+    unattended_install: true
+MinimumVersion: '2.3'
+ParentRecipe: com.github.anywhereops.download.OpenClaw
+Process:
+- Arguments:
+    dmg_path: '%RECIPE_CACHE_DIR%/%NAME%.dmg'
+    dmg_root: '%RECIPE_CACHE_DIR%/%NAME%'
+  Processor: DmgCreator
+- Arguments:
+    pkg_path: '%dmg_path%'
+    repo_subdirectory: '%MUNKI_REPO_SUBDIR%'
+  Processor: MunkiImporter

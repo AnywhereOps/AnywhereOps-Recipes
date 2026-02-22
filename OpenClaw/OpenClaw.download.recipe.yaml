@@ -1,0 +1,24 @@
+Description: Downloads the latest version of OpenClaw.
+Identifier: com.github.anywhereops.download.OpenClaw
+Input:
+  NAME: OpenClaw
+MinimumVersion: '2.3'
+Process:
+- Arguments:
+    appcast_url: https://raw.githubusercontent.com/openclaw/openclaw/main/appcast.xml
+  Processor: SparkleUpdateInfoProvider
+- Arguments:
+    filename: '%NAME%-%version%.zip'
+  Processor: URLDownloader
+- Processor: EndOfCheckPhase
+- Arguments:
+    archive_path: '%pathname%'
+    destination_path: '%RECIPE_CACHE_DIR%/%NAME%'
+    purge_destination: true
+  Processor: Unarchiver
+- Arguments:
+    input_path: '%RECIPE_CACHE_DIR%/%NAME%/OpenClaw.app'
+    requirement: identifier "ai.openclaw.mac" and anchor apple generic and certificate
+      1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13]
+      /* exists */ and certificate leaf[subject.OU] = Y5PE65HELJ
+  Processor: CodeSignatureVerifier

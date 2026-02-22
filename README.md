@@ -22,6 +22,8 @@ Some recipes in this repo:
 | JohnsonControlsLauncher | Johnson Controls building automation | Development |
 | 3D Slicer | Medical imaging and visualization (KitwareInc) | Development/Testing |
 | Mitel MiTeam Meetings | Video conferencing | Complete |
+| OpenClaw | "Your own personal AI assistant. Any OS. Any Platform. The lobster\
+      \ way. \U0001F99E " | Complete |
 | PasswordSafe | Password manager | Complete |
 | QuPath | Bioimage analysis for pathology | Complete |
 | SeqGeq | Flow cytometry data analysis | In Development |
